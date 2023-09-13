@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import '../../../shared/di/injection.dart';
+import '../../../shared/resources/routes_manager.dart';
 import '../common_widgets/build_logo_widget.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -22,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   _goNextScreen() {
-    // sl<NavigatorManager>().pushReplacementNamed(Routes.splashRoute);
+    sl<NavigatorManager>().pushReplacementNamed(Routes.homeScreenRoute);
   }
 
   @override
