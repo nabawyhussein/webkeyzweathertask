@@ -20,7 +20,7 @@ class WeatherCubit extends Cubit<WeatherState> {
   List<WeatherDetailsModel> userSavedLocationsList = [];
 
   Future<Location?> getLocationByName({required String locationName}) async {
-    emit(SearchLocationRemoteLoading());
+
     try {
       var permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.whileInUse ||
@@ -47,6 +47,7 @@ class WeatherCubit extends Cubit<WeatherState> {
 
 
   Future<void> getWeatherByLocation({required String locationName})async {
+    emit(SearchLocationRemoteLoading());
    final location = await getLocationByName(locationName: locationName);
    if(location != null){
      weatherDetailsModel = await getWeatherDetails(lat: location.latitude.toString(),lng:location.longitude.toString() );
@@ -57,6 +58,9 @@ class WeatherCubit extends Cubit<WeatherState> {
    if(weatherDetailsModel!= null)
    {
      emit(WeatherDataFoundSuccess());
+   }
+   else{
+     emit(WeatherDataFoundFail());
    }
 
   }
@@ -80,11 +84,10 @@ class WeatherCubit extends Cubit<WeatherState> {
 
   Future <WeatherDetailsModel?>
   getUserSavedLocations({required String locationName}) async {
-    emit(GetUserSavedLocationsLoading());
+
     userSavedLocationsList = await LocalDBController.getSavedLocationList;
     if (userSavedLocationsList.isEmpty) {
       showSimpleToast(msg: "Location is Not Found");
-      emit(WeatherDataFoundFail());
     } else {
       try {
         final details = userSavedLocationsList.firstWhere(
