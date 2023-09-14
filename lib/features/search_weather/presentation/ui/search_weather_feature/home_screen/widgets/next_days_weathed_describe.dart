@@ -4,6 +4,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:webkeys/core/shared/resources/extensions.dart';
 
 import '../../../../../../../core/shared/resources/colors_manager.dart';
+import '../../../../../../../core/shared/resources/constants_manager.dart';
 import '../../../../../../../core/shared/resources/responsive_screens_controller.dart';
 import '../../../../bloc/weather_cubit/weather_cubit.dart';
 import '../../../common_widgets/build_text.dart';
@@ -16,7 +17,7 @@ class NextDaysWeatherDescribe extends StatelessWidget {
     final locationCubit = BlocProvider.of<WeatherCubit>(context);
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(ScreenSize.screenWidth * .05),
+        borderRadius: BorderRadius.circular(ConstantsManager.borderRadius),
         border: Border.all(color: ColorManager.borderColor, width: 2),
       ),
       padding: EdgeInsets.all(ScreenSize.screenWidth * 0.02),

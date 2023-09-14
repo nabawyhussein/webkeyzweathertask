@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/shared/resources/colors_manager.dart';
+import '../../../../../core/shared/resources/constants_manager.dart';
 import '../../../../../core/shared/resources/responsive_screens_controller.dart';
 
 class BuildTextField extends StatelessWidget {
@@ -42,7 +43,7 @@ class BuildTextField extends StatelessWidget {
         height: ScreenSize.screenHeight * 0.055,
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(ScreenSize.screenWidth * .05),
+          borderRadius: BorderRadius.circular(ConstantsManager.borderRadius),
           border: Border.all(color: ColorManager.borderColor, width: 2),
         ),
         child: TextFormField(
@@ -65,15 +66,15 @@ class BuildTextField extends StatelessWidget {
                 color: Colors.black, fontWeight: FontWeight.bold),
             focusedBorder: OutlineInputBorder(
               borderSide: const BorderSide(color: Colors.white),
-              borderRadius: BorderRadius.circular(ScreenSize.screenWidth * .05),
+              borderRadius: BorderRadius.circular(ConstantsManager.borderRadius),
             ),
             enabledBorder: OutlineInputBorder(
               borderSide: const BorderSide(color: Colors.white),
-              borderRadius: BorderRadius.circular(ScreenSize.screenWidth * .05),
+              borderRadius: BorderRadius.circular(ConstantsManager.borderRadius),
             ),
             errorBorder: OutlineInputBorder(
               borderSide: const BorderSide(color: Colors.red),
-              borderRadius: BorderRadius.circular(ScreenSize.screenWidth * .05),
+              borderRadius: BorderRadius.circular(ConstantsManager.borderRadius),
             ),
           ),
           validator: (value) {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/shared/resources/colors_manager.dart';
+import '../../../../../core/shared/resources/constants_manager.dart';
 import '../../../../../core/shared/resources/responsive_screens_controller.dart';
 
 class BuildButton extends StatelessWidget {
@@ -26,12 +27,12 @@ class BuildButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         alignment: Alignment.center,
-        width: width ?? ScreenSize.screenWidth * 0.62,
+        width: width ?? ScreenSize.screenWidth * 0.52,
         height: height ?? ScreenSize.screenHeight * 0.06,
         margin: EdgeInsets.only(top: ScreenSize.screenHeight * .015),
         decoration: BoxDecoration(
           color: btnColor,
-          borderRadius: BorderRadius.circular(ScreenSize.screenWidth * .05),
+          borderRadius: BorderRadius.circular(ConstantsManager.borderRadius),
         ),
         child: Text(btnText,
             style: TextStyle(
