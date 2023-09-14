@@ -47,7 +47,6 @@ class WeatherCubit extends Cubit<WeatherState> {
 
 
   Future<void> getWeatherByLocation({required String locationName})async {
-    weatherDetailsModel = null;
    final location = await getLocationByName(locationName: locationName);
    if(location != null){
      weatherDetailsModel = await getWeatherDetails(lat: location.latitude.toString(),lng:location.longitude.toString() );
@@ -72,7 +71,6 @@ class WeatherCubit extends Cubit<WeatherState> {
 
      final details = await searchWeatherUseCase.call(lat: lat, lng: lng);
       userSavedLocationsList = await LocalDBController.getSavedLocationList;
-      emit(WeatherDataFoundSuccess());
       return details;
     } catch (e) {
       showSimpleToast(msg: "Error : Try valid name");
@@ -92,7 +90,7 @@ class WeatherCubit extends Cubit<WeatherState> {
         final details = userSavedLocationsList.firstWhere(
             (element) => element.timezone.toLowerCase().contains(locationName));
         userSavedLocationsList = await LocalDBController.getSavedLocationList;
-        emit(WeatherDataFoundSuccess());
+
         return details;
       } catch (e) {
         showSimpleToast(msg: "Location is Not Found");
