@@ -1,7 +1,7 @@
 import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../presentation/ui/home_screen/home_screen.dart';
+import '../../presentation/ui/search_weather_feature/home_screen/home_screen.dart';
 import '../../presentation/ui/splash/splash_screen.dart';
 
 

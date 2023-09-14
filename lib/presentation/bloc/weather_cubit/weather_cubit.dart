@@ -30,7 +30,10 @@ class WeatherCubit extends Cubit<WeatherState> {
       var permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.whileInUse ||
           permission == LocationPermission.always) {
-        getUserSavedLocations(locationName: locationName);
+        List<Location> locations = await locationFromAddress(locationName);
+        getWeatherDetails(lat: locations.first.latitude.toString(), lng: locations.first.longitude.toString());
+
+        // getUserSavedLocations(locationName: locationName);
       }
 
     }catch(e){

@@ -5,10 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:webkeys/presentation/bloc/weather_cubit/weather_cubit.dart';
 
-import '../../../../shared/di/injection.dart';
-import '../../../../shared/resources/colors_manager.dart';
-import '../../../../shared/resources/responsive_screens_controller.dart';
-import '../../../../shared/resources/routes_manager.dart';
+import '../../../../../shared/di/injection.dart';
+import '../../../../../shared/resources/colors_manager.dart';
+import '../../../../../shared/resources/responsive_screens_controller.dart';
+import '../../../../../shared/resources/routes_manager.dart';
 
 
 class SavedLocationsDialog extends StatelessWidget {

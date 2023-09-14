@@ -1,12 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:webkeys/shared/resources/extensions.dart';
-
-import '../../../../shared/resources/colors_manager.dart';
-import '../../../../shared/resources/responsive_screens_controller.dart';
-import '../../../bloc/weather_cubit/weather_cubit.dart';
-import '../../common_widgets/build_text.dart';
+import 'package:webkeys/presentation/bloc/weather_cubit/weather_cubit.dart';
+import '../../../../../shared/resources/colors_manager.dart';
+import '../../../../../shared/resources/responsive_screens_controller.dart';
+import '../../../common_widgets/build_text.dart';
 
 class NextDaysWeatherDescribe extends StatelessWidget {
   const NextDaysWeatherDescribe({super.key});

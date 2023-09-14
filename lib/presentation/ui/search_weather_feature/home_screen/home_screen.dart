@@ -3,17 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:webkeys/presentation/bloc/weather_cubit/weather_cubit.dart';
 import 'package:webkeys/presentation/ui/common_widgets/build_button.dart';
-import 'package:webkeys/presentation/ui/common_widgets/build_text.dart';
-import 'package:webkeys/presentation/ui/home_screen/widgets/locations_dialog.dart';
-import 'package:webkeys/presentation/ui/home_screen/widgets/next_days_weathed_describe.dart';
-import 'package:webkeys/presentation/ui/home_screen/widgets/today_weather_describe.dart';
-import 'package:webkeys/shared/resources/extensions.dart';
+import 'package:webkeys/presentation/ui/search_weather_feature/home_screen/widgets/locations_dialog.dart';
+import 'package:webkeys/presentation/ui/search_weather_feature/home_screen/widgets/next_days_weathed_describe.dart';
+import 'package:webkeys/presentation/ui/search_weather_feature/home_screen/widgets/today_weather_describe.dart';
 import 'package:webkeys/shared/resources/responsive_screens_controller.dart';
 
-import '../../../shared/resources/assets_manger.dart';
-import '../../../shared/resources/colors_manager.dart';
-import '../common_widgets/build_text_field.dart';
-import '../common_widgets/toast.dart';
+import '../../../../shared/resources/assets_manger.dart';
+import '../../../../shared/resources/colors_manager.dart';
+import '../../common_widgets/build_text_field.dart';
+import '../../common_widgets/toast.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -100,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         current is SaveLocationSuccess ||
                         current is WeatherDataFoundFail  ),
                 builder: (context, state) {
-                  if (state is WeatherDataFoundSuccess) {
+                  if (state is WeatherDataFoundSuccess || state is SaveLocationSuccess) {
                     return   Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
