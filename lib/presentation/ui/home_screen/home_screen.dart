@@ -95,7 +95,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               BlocBuilder<WeatherCubit, WeatherState>(
                 buildWhen: (previous, current) => previous != current
-                    && (current is WeatherDataFoundSuccess ||
+                    && (
+                        current is WeatherDataFoundSuccess ||
+                        current is SaveLocationSuccess ||
                         current is WeatherDataFoundFail  ),
                 builder: (context, state) {
                   if (state is WeatherDataFoundSuccess) {

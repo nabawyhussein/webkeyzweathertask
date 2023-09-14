@@ -25,7 +25,7 @@ class NextDaysWeatherDescribe extends StatelessWidget {
       margin: EdgeInsets.all(ScreenSize.screenWidth*0.02),
       child: Column(
         children: [
-          BuildText(txt: "Next 5 Days",
+          const BuildText(txt: "Next 5 Days",
             fontWeight: FontWeight.bold,
             fontSize: 18,
           ),
@@ -35,6 +35,7 @@ class NextDaysWeatherDescribe extends StatelessWidget {
 
             child: ListView.separated(
               itemCount: 5,
+              padding: EdgeInsets.zero,
               itemBuilder: (context, index) {
 
                 return Column(
