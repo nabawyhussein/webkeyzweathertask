@@ -5,7 +5,7 @@ import '../../../../../core/shared/resources/constants_manager.dart';
 import '../../../../../core/shared/resources/responsive_screens_controller.dart';
 
 class BuildButton extends StatelessWidget {
-  BuildButton({
+  const BuildButton({
     Key? key,
     required this.btnText,
     this.btnColor = ColorManager.homeColorDark,

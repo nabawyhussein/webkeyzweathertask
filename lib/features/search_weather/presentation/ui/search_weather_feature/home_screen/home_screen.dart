@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
-import 'package:webkeys/features/search_weather/presentation/ui/search_weather_feature/home_screen/widgets/locations_dialog.dart';
-import 'package:webkeys/features/search_weather/presentation/ui/search_weather_feature/home_screen/widgets/next_days_weathed_describe.dart';
 import 'package:webkeys/features/search_weather/presentation/ui/search_weather_feature/home_screen/widgets/search_results.dart';
-import 'package:webkeys/features/search_weather/presentation/ui/search_weather_feature/home_screen/widgets/today_weather_describe.dart';
-
 import '../../../../../../core/shared/resources/assets_manger.dart';
 import '../../../../../../core/shared/resources/colors_manager.dart';
 import '../../../../../../core/shared/resources/responsive_screens_controller.dart';
@@ -78,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     btnText: 'Search',
                     onTap: () {
                       if (searchController.text.isNotEmpty) {
-                        locationCubit.searchLocationWeather(
+                        locationCubit.getWeatherByLocation(
                             locationName: searchController.text);
                       } else {
                         showSimpleToast(msg: "Enter Valid Data");
