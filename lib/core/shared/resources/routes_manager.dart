@@ -1,10 +1,10 @@
 import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../features/search_weather/presentation/ui/search_weather_feature/home_screen/home_screen.dart';
 import '../../../features/search_weather/presentation/ui/splash/splash_screen.dart';
-
 
 class Routes {
   static const String splashRoute = "/";
@@ -36,13 +36,12 @@ class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     // Match.
     switch (settings.name) {
-
       case Routes.splashRoute:
         return AppPageRoute(
           settings: settings,
           builder: (_) => const SplashScreen(),
         );
-        case Routes.homeScreenRoute:
+      case Routes.homeScreenRoute:
         return AppPageRoute(
           settings: settings,
           builder: (_) => const HomeScreen(),
@@ -93,7 +92,8 @@ class NavigatorManager {
 
   Future<dynamic> navigateAndFinish(String routeName) {
     RouteGenerator.onRouteChanged(routeName);
-    return navigatorKey.currentState!.pushNamedAndRemoveUntil(routeName, (Route<dynamic> route) => false);
+    return navigatorKey.currentState!
+        .pushNamedAndRemoveUntil(routeName, (Route<dynamic> route) => false);
   }
 }
 
@@ -102,9 +102,9 @@ class AppPageRoute extends CupertinoPageRoute {
     RouteSettings? settings,
     required Widget Function(BuildContext) builder,
   }) : super(
-    settings: settings,
-    builder: (context) {
-      return builder(context);
-    },
-  );
+          settings: settings,
+          builder: (context) {
+            return builder(context);
+          },
+        );
 }

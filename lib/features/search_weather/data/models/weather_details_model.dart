@@ -2,7 +2,6 @@
 //
 //     final weatherDetailsModel = weatherDetailsModelFromJson(jsonString);
 
-import 'dart:convert';
 
 
 class WeatherDetailsModel {
@@ -21,6 +20,7 @@ class WeatherDetailsModel {
     required this.current,
     required this.daily,
   });
+
   WeatherDetailsModel copyWith({
     double? lat,
     double? lon,
@@ -39,23 +39,24 @@ class WeatherDetailsModel {
         daily: daily ?? this.daily,
       );
 
-  factory WeatherDetailsModel.fromJson(Map<String, dynamic> json) => WeatherDetailsModel(
-    lat: json["lat"]?.toDouble(),
-    lon: json["lon"]?.toDouble(),
-    timezone: json["timezone"],
-    timezoneOffset: json["timezone_offset"],
-    current: Current.fromJson(json["current"]),
-    daily: List<Daily>.from(json["daily"].map((x) => Daily.fromJson(x))),
-  );
+  factory WeatherDetailsModel.fromJson(Map<String, dynamic> json) =>
+      WeatherDetailsModel(
+        lat: json["lat"]?.toDouble(),
+        lon: json["lon"]?.toDouble(),
+        timezone: json["timezone"],
+        timezoneOffset: json["timezone_offset"],
+        current: Current.fromJson(json["current"]),
+        daily: List<Daily>.from(json["daily"].map((x) => Daily.fromJson(x))),
+      );
 
   Map<String, dynamic> toJson() => {
-    "lat": lat,
-    "lon": lon,
-    "timezone": timezone,
-    "timezone_offset": timezoneOffset,
-    "current": current.toJson(),
-    "daily": List<dynamic>.from(daily.map((x) => x.toJson())),
-  };
+        "lat": lat,
+        "lon": lon,
+        "timezone": timezone,
+        "timezone_offset": timezoneOffset,
+        "current": current.toJson(),
+        "daily": List<dynamic>.from(daily.map((x) => x.toJson())),
+      };
 }
 
 class Current {
@@ -74,20 +75,21 @@ class Current {
   });
 
   factory Current.fromJson(Map<String, dynamic> json) => Current(
-    dt: json["dt"],
-    temp: json["temp"]?.toDouble(),
-    humidity: json["humidity"],
-    windSpeed: json["wind_speed"]?.toDouble(),
-    weather: List<Weather>.from(json["weather"].map((x) => Weather.fromJson(x))),
-  );
+        dt: json["dt"],
+        temp: json["temp"]?.toDouble(),
+        humidity: json["humidity"],
+        windSpeed: json["wind_speed"]?.toDouble(),
+        weather:
+            List<Weather>.from(json["weather"].map((x) => Weather.fromJson(x))),
+      );
 
   Map<String, dynamic> toJson() => {
-    "dt": dt,
-    "temp": temp,
-    "humidity": humidity,
-    "wind_speed": windSpeed,
-    "weather": List<dynamic>.from(weather.map((x) => x.toJson())),
-  };
+        "dt": dt,
+        "temp": temp,
+        "humidity": humidity,
+        "wind_speed": windSpeed,
+        "weather": List<dynamic>.from(weather.map((x) => x.toJson())),
+      };
 }
 
 class Weather {
@@ -100,17 +102,15 @@ class Weather {
   });
 
   factory Weather.fromJson(Map<String, dynamic> json) => Weather(
-    id: json["id"],
-    description: json["description"],
-  );
+        id: json["id"],
+        description: json["description"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "description": description,
-  };
+        "id": id,
+        "description": description,
+      };
 }
-
-
 
 class Daily {
   final Temp temp;
@@ -122,16 +122,16 @@ class Daily {
   });
 
   factory Daily.fromJson(Map<String, dynamic> json) => Daily(
-    temp: Temp.fromJson(json["temp"]),
-    weather: List<Weather>.from(json["weather"].map((x) => Weather.fromJson(x))),
-  );
+        temp: Temp.fromJson(json["temp"]),
+        weather:
+            List<Weather>.from(json["weather"].map((x) => Weather.fromJson(x))),
+      );
 
   Map<String, dynamic> toJson() => {
-    "temp": temp.toJson(),
-    "weather": List<dynamic>.from(weather.map((x) => x.toJson())),
-  };
+        "temp": temp.toJson(),
+        "weather": List<dynamic>.from(weather.map((x) => x.toJson())),
+      };
 }
-
 
 class Temp {
   final double day;
@@ -145,16 +145,14 @@ class Temp {
   });
 
   factory Temp.fromJson(Map<String, dynamic> json) => Temp(
-    day: json["day"]?.toDouble(),
-    min: json["min"]?.toDouble(),
-    max: json["max"]?.toDouble(),
-  );
+        day: json["day"]?.toDouble(),
+        min: json["min"]?.toDouble(),
+        max: json["max"]?.toDouble(),
+      );
 
   Map<String, dynamic> toJson() => {
-    "day": day,
-    "min": min,
-    "max": max,
-  };
+        "day": day,
+        "min": min,
+        "max": max,
+      };
 }
-
-

@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 
-
-
 class BuildText extends StatelessWidget {
   const BuildText(
       {Key? key,
       required this.txt,
       this.fontSize,
-         this.color =Colors.black,
+      this.color = Colors.black,
       this.fontWeight,
-      this.textAlign=TextAlign.center,
-        this.maxLines,
+      this.textAlign = TextAlign.center,
+      this.maxLines,
       this.decoration = false})
       : super(key: key);
   final String? txt;
@@ -19,7 +17,8 @@ class BuildText extends StatelessWidget {
   final TextAlign? textAlign;
   final FontWeight? fontWeight;
   final bool decoration;
-  final int ?maxLines;
+  final int? maxLines;
+
   @override
   Widget build(BuildContext context) {
     return Text(

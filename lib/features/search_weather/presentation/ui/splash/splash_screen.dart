@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+
 import '../../../../../core/shared/di/injection.dart';
 import '../../../../../core/shared/resources/routes_manager.dart';
 import '../common_widgets/build_logo_widget.dart';
@@ -19,8 +20,7 @@ class _SplashScreenState extends State<SplashScreen>
   late Animation<double> _animation;
 
   _startDelay() async {
-    _timer =
-        Timer(const Duration(seconds: 1), _goNextScreen);
+    _timer = Timer(const Duration(seconds: 1), _goNextScreen);
   }
 
   _goNextScreen() {
@@ -76,6 +76,4 @@ class _SplashScreenState extends State<SplashScreen>
       ),
     );
   }
-
-
 }

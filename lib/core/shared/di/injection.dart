@@ -20,5 +20,6 @@ Future<void> init() async {
     () => NavigatorManager(),
   );
   sl.registerLazySingleton<RepoBase>(() => RepoImp(sl()));
-  sl.registerLazySingleton<BaseSearchWeatherRemote>(() => SearchWeatherRemote());
+  sl.registerLazySingleton<BaseSearchWeatherRemote>(
+      () => SearchWeatherRemote());
 }

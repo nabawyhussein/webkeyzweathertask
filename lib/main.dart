@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'app/app.dart';
 import 'core/shared/di/injection.dart';
 
@@ -7,5 +8,3 @@ Future<void> main() async {
   await init();
   runApp(const MyApp());
 }
-
-

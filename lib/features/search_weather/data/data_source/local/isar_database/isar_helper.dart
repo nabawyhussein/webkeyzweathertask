@@ -9,7 +9,6 @@ import 'package:webkeys/features/search_weather/data/data_source/local/isar_data
 
 import '../../../../../../core/shared/error/exceptions.dart';
 
-
 class IasrHelper {
   late Future<Isar> db;
 
@@ -18,18 +17,16 @@ class IasrHelper {
   }
 
   Future<void> put(String dbKey, dynamic v) async {
-    try{
+    try {
       final iser = await db;
       SaveDataModel ret = SaveDataModel()
         ..value = jsonEncode(v)
         ..key = dbKey;
       iser.writeTxnSync(() => iser.saveDataModels.putByKeySync(ret));
-    }
-    catch(e){
+    } catch (e) {
       debugPrint("Isar Error Exception");
       debugPrint(e.toString());
     }
-
   }
 
   Future get(String key) async {
@@ -77,6 +74,7 @@ class IasrHelper {
   }
 
   Directory? externalDirectory;
+
   Future<void> getExternalStorage() async {
     if (Platform.isIOS) {
       externalDirectory = await getApplicationDocumentsDirectory();

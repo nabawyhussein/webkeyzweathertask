@@ -1,5 +1,4 @@
 import '../../data/models/weather_details_model.dart';
-import '../entities/weather_details_entity.dart';
 import '../repo/repo_abstract.dart';
 
 class SearchWeatherUseCase {
@@ -10,7 +9,7 @@ class SearchWeatherUseCase {
   Future<WeatherDetailsModel> call({
     required String lat,
     required String lng,
-  } ) async {
+  }) async {
     return await repo.getWeatherDetails(lat: lat, lng: lng);
-    }
+  }
 }

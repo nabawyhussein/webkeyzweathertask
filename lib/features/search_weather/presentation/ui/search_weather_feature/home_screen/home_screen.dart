@@ -4,6 +4,7 @@ import 'package:lottie/lottie.dart';
 import 'package:webkeys/features/search_weather/presentation/ui/search_weather_feature/home_screen/widgets/locations_dialog.dart';
 import 'package:webkeys/features/search_weather/presentation/ui/search_weather_feature/home_screen/widgets/next_days_weathed_describe.dart';
 import 'package:webkeys/features/search_weather/presentation/ui/search_weather_feature/home_screen/widgets/today_weather_describe.dart';
+
 import '../../../../../../core/shared/resources/assets_manger.dart';
 import '../../../../../../core/shared/resources/colors_manager.dart';
 import '../../../../../../core/shared/resources/responsive_screens_controller.dart';
@@ -49,19 +50,18 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SizedBox(height: ScreenSize.screenHeight*.05,),
-              Lottie.asset(AppLottie.weatherLottie,
-              height: ScreenSize.screenHeight*.23,
-                width: ScreenSize.screenWidth*.6,
-                fit: BoxFit.fill
+              SizedBox(
+                height: ScreenSize.screenHeight * .05,
               ),
-
+              Lottie.asset(AppLottie.weatherLottie,
+                  height: ScreenSize.screenHeight * .23,
+                  width: ScreenSize.screenWidth * .6,
+                  fit: BoxFit.fill),
               BuildTextField(
                 textController: searchController,
                 keyboardType: TextInputType.text,
                 labelTxt: 'Enter Location Name',
               ),
-
               BlocBuilder<WeatherCubit, WeatherState>(
                 // buildWhen: (previous, current) => previous != current
                 //     && (current is SearchLocationRemoteLoading ||
@@ -73,77 +73,78 @@ class _HomeScreenState extends State<HomeScreen> {
                   if (state is SearchLocationRemoteLoading) {
                     return const Center(
                         child: CircularProgressIndicator(
-                          color: ColorManager.homeColorDark,
-                        ));
+                      color: ColorManager.homeColorDark,
+                    ));
                   }
 
-                  return BuildButton(btnText: 'Search',
+                  return BuildButton(
+                    btnText: 'Search',
                     onTap: () {
-                    if(searchController.text.isNotEmpty) {
-                      locationCubit.searchLocationWeather(locationName: searchController.text);
-                    }
-                    else{
-                      showSimpleToast( msg: "Enter Valid Data");
-                    }
+                      if (searchController.text.isNotEmpty) {
+                        locationCubit.searchLocationWeather(
+                            locationName: searchController.text);
+                      } else {
+                        showSimpleToast(msg: "Enter Valid Data");
+                      }
                     },
                   );
                 },
               ),
               BlocBuilder<WeatherCubit, WeatherState>(
-                buildWhen: (previous, current) => previous != current
-                    && (
-                        current is WeatherDataFoundSuccess ||
+                buildWhen: (previous, current) =>
+                    previous != current &&
+                    (current is WeatherDataFoundSuccess ||
                         current is SaveLocationSuccess ||
                         current is SearchLocationRemoteLoading ||
-                        current is WeatherDataFoundFail  ),
+                        current is WeatherDataFoundFail),
                 builder: (context, state) {
-                  if (state is WeatherDataFoundSuccess || state is SaveLocationSuccess) {
-                    return   Column(
+                  if (state is WeatherDataFoundSuccess ||
+                      state is SaveLocationSuccess) {
+                    return Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-
-                         TodayWeatherDescribe(),
-                        SizedBox(height: ScreenSize.screenHeight*.01,),
-                         NextDaysWeatherDescribe(),
+                        TodayWeatherDescribe(),
+                        SizedBox(
+                          height: ScreenSize.screenHeight * .01,
+                        ),
+                        NextDaysWeatherDescribe(),
                         Row(
                           mainAxisAlignment:
-                          locationCubit.userSavedLocationsList.isNotEmpty
-                              ?
-                          MainAxisAlignment.spaceEvenly
-                              :
-                          MainAxisAlignment.center,
+                              locationCubit.userSavedLocationsList.isNotEmpty
+                                  ? MainAxisAlignment.spaceEvenly
+                                  : MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             if (locationCubit.userSavedLocationsList.isNotEmpty)
-                              BuildButton(btnText: "Saved Weathers",
+                              BuildButton(
+                                btnText: "Saved Weathers",
                                 btnColor: Colors.black,
-                                width: ScreenSize.screenWidth*.41,
-                                height: ScreenSize.screenHeight*.05,
-                                onTap: (){
+                                width: ScreenSize.screenWidth * .41,
+                                height: ScreenSize.screenHeight * .05,
+                                onTap: () {
                                   showSavedLocationsDialog();
                                 },
                               ),
-                            BuildButton(btnText: "Save",
+                            BuildButton(
+                              btnText: "Save",
                               btnColor: Colors.black,
-                              width: ScreenSize.screenWidth*.41,
-                              height: ScreenSize.screenHeight*.05,
-                              onTap: (){
-                                locationCubit.setUserSavedLocations(locationName: searchController.text);
+                              width: ScreenSize.screenWidth * .41,
+                              height: ScreenSize.screenHeight * .05,
+                              onTap: () {
+                                locationCubit.setUserSavedLocations(
+                                    locationName: searchController.text);
                               },
                             ),
-
                           ],
                         ),
                       ],
                     );
                   }
 
-                  return  Lottie.asset(
-                      AppLottie.weatherLoadingLottie,
-                      height: ScreenSize.screenHeight*.43,
+                  return Lottie.asset(AppLottie.weatherLoadingLottie,
+                      height: ScreenSize.screenHeight * .43,
                       width: ScreenSize.screenWidth,
-                      fit: BoxFit.cover
-                  );
+                      fit: BoxFit.cover);
                 },
               )
             ],

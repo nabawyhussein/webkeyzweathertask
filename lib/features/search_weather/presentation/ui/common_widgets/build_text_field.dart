@@ -1,34 +1,32 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../../../core/shared/resources/colors_manager.dart';
 import '../../../../../core/shared/resources/responsive_screens_controller.dart';
 
-
-
 class BuildTextField extends StatelessWidget {
-   BuildTextField(
+  BuildTextField(
       {Key? key,
       this.labelTxt,
       this.width,
       this.maxLines,
-        this.onChange,
-        this.suffixIcon,
-        this.textDirect,
-        this.whyToWorkValidation=false,
-        this.textAlign= TextAlign.center,
+      this.onChange,
+      this.suffixIcon,
+      this.textDirect,
+      this.whyToWorkValidation = false,
+      this.textAlign = TextAlign.center,
       required this.textController,
-        this.isDate=false,
-      this.keyboardType,this.readonly=false})
+      this.isDate = false,
+      this.keyboardType,
+      this.readonly = false})
       : super(key: key);
-   String? labelTxt;
+  String? labelTxt;
   final double? width;
   final int? maxLines;
   final TextInputType? keyboardType;
   final TextEditingController textController;
   final bool readonly;
   final bool isDate;
-  final Widget ?suffixIcon;
+  final Widget? suffixIcon;
   final TextAlign textAlign;
   final bool whyToWorkValidation;
   final ValueChanged? onChange;
@@ -41,16 +39,13 @@ class BuildTextField extends StatelessWidget {
         margin: EdgeInsets.zero,
         alignment: Alignment.center,
         width: width ?? ScreenSize.screenWidth * 0.85,
-         height: ScreenSize.screenHeight * 0.055,
+        height: ScreenSize.screenHeight * 0.055,
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(ScreenSize.screenWidth*.05),
-
-          border: Border.all(color: ColorManager.borderColor,width: 2),
-
+          borderRadius: BorderRadius.circular(ScreenSize.screenWidth * .05),
+          border: Border.all(color: ColorManager.borderColor, width: 2),
         ),
-        child:
-        TextFormField(
+        child: TextFormField(
           controller: textController,
           maxLines: maxLines ?? 1,
           readOnly: readonly,
@@ -67,19 +62,18 @@ class BuildTextField extends StatelessWidget {
             hintText: labelTxt,
             suffixIcon: suffixIcon,
             hintStyle: const TextStyle(
-              color: Colors.black,
-                fontWeight: FontWeight.bold),
+                color: Colors.black, fontWeight: FontWeight.bold),
             focusedBorder: OutlineInputBorder(
               borderSide: const BorderSide(color: Colors.white),
-              borderRadius: BorderRadius.circular(ScreenSize.screenWidth*.05),
+              borderRadius: BorderRadius.circular(ScreenSize.screenWidth * .05),
             ),
             enabledBorder: OutlineInputBorder(
               borderSide: const BorderSide(color: Colors.white),
-              borderRadius: BorderRadius.circular(ScreenSize.screenWidth*.05),
+              borderRadius: BorderRadius.circular(ScreenSize.screenWidth * .05),
             ),
             errorBorder: OutlineInputBorder(
               borderSide: const BorderSide(color: Colors.red),
-              borderRadius: BorderRadius.circular(ScreenSize.screenWidth*.05),
+              borderRadius: BorderRadius.circular(ScreenSize.screenWidth * .05),
             ),
           ),
           validator: (value) {
@@ -91,9 +85,7 @@ class BuildTextField extends StatelessWidget {
             // }
             return null;
           },
-          onSaved: (f){
-
-          },
+          onSaved: (f) {},
           // onFieldSubmitted: (fff){
           //   debugPrint('fffffffffffffffffffffffffffffffffffff');
           // },
