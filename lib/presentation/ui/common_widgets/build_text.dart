@@ -8,7 +8,7 @@ class BuildText extends StatelessWidget {
       {Key? key,
       required this.txt,
       this.fontSize,
-        required this.color ,
+         this.color =Colors.black,
       this.fontWeight,
       this.textAlign=TextAlign.center,
         this.maxLines,
