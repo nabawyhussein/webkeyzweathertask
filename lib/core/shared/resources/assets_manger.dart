@@ -9,6 +9,7 @@ class AppImages {
 }
 class AppLottie {
   static const weatherLottie = "$lottiePath/weather.json";
+  static const weatherLoadingLottie = "$lottiePath/weatherloading.json";
 
 
 }

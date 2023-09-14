@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:webkeys/core/shared/resources/extensions.dart';
 import '../../../../../../../core/shared/resources/colors_manager.dart';
 import '../../../../../../../core/shared/resources/responsive_screens_controller.dart';
@@ -36,22 +37,26 @@ class NextDaysWeatherDescribe extends StatelessWidget {
               padding: EdgeInsets.zero,
               itemBuilder: (context, index) {
 
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-
-
-                    BuildText(txt: DateTime.now().add(Duration(days: index+1)).yMd,
+                return AnimationConfiguration.staggeredList(
+                  position: index,
+                  duration: const Duration(seconds: 2),
+                  child: FadeInAnimation(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        BuildText(txt: DateTime.now().add(Duration(days: index+1)).yMd,
+                        ),
+                        BuildText(txt: "Temperature : ${locationCubit.weatherDetailsModel!.daily[index].temp.day}",
+                        ),
+                        BuildText(txt: "High : ${locationCubit.weatherDetailsModel!.daily[index].temp.max}",
+                        ),
+                        BuildText(txt: "Low : ${locationCubit.weatherDetailsModel!.daily[index].temp.min}",
+                        ),
+                        BuildText(txt: "Describe : ${locationCubit.weatherDetailsModel!.daily[index].weather.first.description}",
+                        ),
+                      ],
                     ),
-                    BuildText(txt: "Temperature : ${locationCubit.weatherDetailsModel!.daily[index].temp.day}",
-                    ),
-                    BuildText(txt: "High : ${locationCubit.weatherDetailsModel!.daily[index].temp.max}",
-                    ),
-                    BuildText(txt: "Low : ${locationCubit.weatherDetailsModel!.daily[index].temp.min}",
-                    ),
-                    BuildText(txt: "Describe : ${locationCubit.weatherDetailsModel!.daily[index].weather.first.description}",
-                    ),
-                  ],
+                  ),
                 );
 
               },

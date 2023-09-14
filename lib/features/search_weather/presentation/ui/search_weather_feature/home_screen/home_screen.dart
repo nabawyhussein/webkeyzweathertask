@@ -72,7 +72,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 builder: (context, state) {
                   if (state is SearchLocationRemoteLoading) {
                     return const Center(
-                      // child: CircularProgressIndicator());
                         child: CircularProgressIndicator(
                           color: ColorManager.homeColorDark,
                         ));
@@ -95,6 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     && (
                         current is WeatherDataFoundSuccess ||
                         current is SaveLocationSuccess ||
+                        current is SearchLocationRemoteLoading ||
                         current is WeatherDataFoundFail  ),
                 builder: (context, state) {
                   if (state is WeatherDataFoundSuccess || state is SaveLocationSuccess) {
@@ -102,9 +102,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
 
-                        const TodayWeatherDescribe(),
+                         TodayWeatherDescribe(),
                         SizedBox(height: ScreenSize.screenHeight*.01,),
-                        const NextDaysWeatherDescribe(),
+                         NextDaysWeatherDescribe(),
                         Row(
                           mainAxisAlignment:
                           locationCubit.userSavedLocationsList.isNotEmpty
@@ -138,7 +138,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     );
                   }
 
-                  return  Lottie.asset(AppLottie.weatherLottie);
+                  return  Lottie.asset(
+                      AppLottie.weatherLoadingLottie,
+                      height: ScreenSize.screenHeight*.43,
+                      width: ScreenSize.screenWidth,
+                      fit: BoxFit.cover
+                  );
                 },
               )
             ],
