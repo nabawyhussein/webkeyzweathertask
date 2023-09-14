@@ -34,15 +34,12 @@ class BuildButton extends StatelessWidget {
               margin: EdgeInsets.only(top: ScreenSize.screenHeight * .015),
               decoration: BoxDecoration(
                 color: btnColor,
-                borderRadius: BorderRadius.circular(10),
-                  // boxShadow: [
-                  //   commonShadow
-                  // ],
+                borderRadius: BorderRadius.circular(ScreenSize.screenWidth*.05),
               ),
               child: Text(btnText,
                   style:  TextStyle(
                       color: textColor,
-                      fontSize: 20,
+                      fontSize: 18,
                       fontWeight: FontWeight.w800)),
             ),
     );

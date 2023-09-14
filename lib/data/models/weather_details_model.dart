@@ -24,6 +24,24 @@ class WeatherDetailsModel {
     required this.current,
     required this.daily,
   });
+  WeatherDetailsModel copyWith({
+    double? lat,
+    double? lon,
+    String? timezone,
+    int? timezoneOffset,
+    Current? current,
+    List<Minutely>? minutely,
+    List<Current>? hourly,
+    List<Daily>? daily,
+  }) =>
+      WeatherDetailsModel(
+        lat: lat ?? this.lat,
+        lon: lon ?? this.lon,
+        timezone: timezone ?? this.timezone,
+        timezoneOffset: timezoneOffset ?? this.timezoneOffset,
+        current: current ?? this.current,
+        daily: daily ?? this.daily,
+      );
 
   factory WeatherDetailsModel.fromJson(Map<String, dynamic> json) => WeatherDetailsModel(
     lat: json["lat"]?.toDouble(),
