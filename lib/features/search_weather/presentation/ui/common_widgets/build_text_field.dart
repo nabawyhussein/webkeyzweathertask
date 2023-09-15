@@ -66,15 +66,18 @@ class BuildTextField extends StatelessWidget {
                 color: Colors.black, fontWeight: FontWeight.bold),
             focusedBorder: OutlineInputBorder(
               borderSide: const BorderSide(color: Colors.white),
-              borderRadius: BorderRadius.circular(ConstantsManager.borderRadius),
+              borderRadius:
+                  BorderRadius.circular(ConstantsManager.borderRadius),
             ),
             enabledBorder: OutlineInputBorder(
               borderSide: const BorderSide(color: Colors.white),
-              borderRadius: BorderRadius.circular(ConstantsManager.borderRadius),
+              borderRadius:
+                  BorderRadius.circular(ConstantsManager.borderRadius),
             ),
             errorBorder: OutlineInputBorder(
               borderSide: const BorderSide(color: Colors.red),
-              borderRadius: BorderRadius.circular(ConstantsManager.borderRadius),
+              borderRadius:
+                  BorderRadius.circular(ConstantsManager.borderRadius),
             ),
           ),
           validator: (value) {
