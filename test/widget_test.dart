@@ -22,16 +22,14 @@ void main() {
           debugShowCheckedModeBanner: false,
           navigatorKey: sl<NavigatorManager>().navigatorKey,
           title: 'WebKeyZ',
-          home: HomeScreen(),
+          home: const HomeScreen(),
         )));
     // Build your widget tree
 
 
-    // Use findsOneWidget to find a widget by type
     final myWidget = find.byType(BuildTextField);
     final myWidget1 = find.byType(SearchResults);
 
-    // Assert that exactly one MyWidget is present
     expect(myWidget, findsOneWidget);
     expect(myWidget1, findsOneWidget);
     });

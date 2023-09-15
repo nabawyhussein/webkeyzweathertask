@@ -22,7 +22,7 @@ class SearchResults extends StatelessWidget {
           previous != current &&
           (current is WeatherDataFoundSuccess ||
               current is SaveLocationSuccess ||
-              current is SearchLocationRemoteLoading ||
+              current is SearchLocationLoading ||
               current is WeatherDataFoundFail),
       builder: (context, state) {
         if (state is WeatherDataFoundSuccess || state is SaveLocationSuccess) {

@@ -29,10 +29,10 @@ class WeatherCubit extends Cubit<WeatherState> {
   }
 
   Future<void> getWeatherByLocation({required String locationName}) async {
-    emit(SearchLocationRemoteLoading());
+    emit(SearchLocationLoading());
     final location = await getLocationByName(locationName: locationName);
     if (location != null) {
-      weatherDetailsModel = await getWeatherDetails(
+      weatherDetailsModel = await getWeatherDetailsRemote(
           lat: location.latitude.toString(),
           lng: location.longitude.toString());
     } else {
@@ -46,7 +46,7 @@ class WeatherCubit extends Cubit<WeatherState> {
     }
   }
 
-  Future<WeatherDetailsModel?> getWeatherDetails({
+  Future<WeatherDetailsModel?> getWeatherDetailsRemote({
     required String lat,
     required String lng,
   }) async {
@@ -81,7 +81,6 @@ class WeatherCubit extends Cubit<WeatherState> {
   }
 
   Future setUserSavedLocations({required String locationName}) async {
-    emit(SetUserSavedLocationsLoading());
     userSavedLocationsList = await LocalDBController.getSavedLocationList;
     if (userSavedLocationsList.isEmpty) {
       userSavedLocationsList

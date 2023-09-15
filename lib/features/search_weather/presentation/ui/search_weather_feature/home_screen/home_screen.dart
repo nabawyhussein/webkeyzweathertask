@@ -65,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               BlocBuilder<WeatherCubit, WeatherState>(
                 builder: (context, state) {
-                  if (state is SearchLocationRemoteLoading) {
+                  if (state is SearchLocationLoading) {
                     return const Center(
                         child: CircularProgressIndicator(
                       color: ColorManager.homeColorDark,
