@@ -16,7 +16,7 @@ void main()
     test('search Valid Name', () async {
       MockWeather mockWeather = MockWeather ();
       Location? mockLocation = await mockWeather.getLocationByName(locationName: 'egypt');
-      expect(mockLocation?.latitude, 123);
+      expect(mockLocation?.latitude, 26.820553);
       // WeatherDetailsModel? mockWeatherModel = await mockWeather.getWeatherDetails(locationName: 'egypt');
 
     });
