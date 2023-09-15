@@ -1,29 +1,38 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:webkeys/app/app.dart';
+import 'package:webkeys/core/shared/di/injection.dart';
+import 'package:webkeys/core/shared/resources/routes_manager.dart';
+import 'package:webkeys/features/search_weather/presentation/bloc/weather_cubit/weather_cubit.dart';
+import 'package:webkeys/features/search_weather/presentation/ui/common_widgets/build_text_field.dart';
+import 'package:webkeys/features/search_weather/presentation/ui/search_weather_feature/home_screen/home_screen.dart';
+import 'package:webkeys/features/search_weather/presentation/ui/search_weather_feature/home_screen/widgets/search_results.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+  testWidgets('Widget presence test', (WidgetTester tester) async {
+    WidgetsFlutterBinding.ensureInitialized();
+    await init();
+    await tester.pumpWidget(MultiBlocProvider(
+        providers: [
+          BlocProvider<WeatherCubit>(create: (context) => WeatherCubit()),
+        ],
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          navigatorKey: sl<NavigatorManager>().navigatorKey,
+          title: 'WebKeyZ',
+          home: HomeScreen(),
+        )));
+    // Build your widget tree
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
-  });
+    // Use findsOneWidget to find a widget by type
+    final myWidget = find.byType(BuildTextField);
+    final myWidget1 = find.byType(SearchResults);
+
+    // Assert that exactly one MyWidget is present
+    expect(myWidget, findsOneWidget);
+    expect(myWidget1, findsOneWidget);
+    });
 }

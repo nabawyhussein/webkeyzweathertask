@@ -2,8 +2,6 @@
 //
 //     final weatherDetailsModel = weatherDetailsModelFromJson(jsonString);
 
-
-
 class WeatherDetailsModel {
   final double lat;
   final double lon;

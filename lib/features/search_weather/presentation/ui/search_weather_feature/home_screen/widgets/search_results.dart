@@ -11,22 +11,21 @@ import 'locations_dialog.dart';
 import 'next_days_weathed_describe.dart';
 
 class SearchResults extends StatelessWidget {
-  const SearchResults({super.key,required this.searchController});
+  const SearchResults({super.key, required this.searchController});
   final TextEditingController searchController;
 
   @override
   Widget build(BuildContext context) {
     final locationCubit = BlocProvider.of<WeatherCubit>(context);
-    return  BlocBuilder<WeatherCubit, WeatherState>(
+    return BlocBuilder<WeatherCubit, WeatherState>(
       buildWhen: (previous, current) =>
-      previous != current &&
+          previous != current &&
           (current is WeatherDataFoundSuccess ||
               current is SaveLocationSuccess ||
               current is SearchLocationRemoteLoading ||
               current is WeatherDataFoundFail),
       builder: (context, state) {
-        if (state is WeatherDataFoundSuccess ||
-            state is SaveLocationSuccess) {
+        if (state is WeatherDataFoundSuccess || state is SaveLocationSuccess) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -37,9 +36,9 @@ class SearchResults extends StatelessWidget {
               NextDaysWeatherDescribe(),
               Row(
                 mainAxisAlignment:
-                locationCubit.userSavedLocationsList.isNotEmpty
-                    ? MainAxisAlignment.spaceEvenly
-                    : MainAxisAlignment.center,
+                    locationCubit.userSavedLocationsList.isNotEmpty
+                        ? MainAxisAlignment.spaceEvenly
+                        : MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   if (locationCubit.userSavedLocationsList.isNotEmpty)

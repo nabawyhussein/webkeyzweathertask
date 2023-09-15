@@ -25,6 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
+
     searchController = TextEditingController();
   }
 
@@ -83,7 +84,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 },
               ),
-              SearchResults(searchController: searchController,),
+              SearchResults(
+                searchController: searchController,
+              ),
             ],
           ),
         ),

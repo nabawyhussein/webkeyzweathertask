@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:meta/meta.dart';
 
 import '../../../../../core/shared/di/injection.dart';
@@ -20,51 +19,32 @@ class WeatherCubit extends Cubit<WeatherState> {
   List<WeatherDetailsModel> userSavedLocationsList = [];
 
   Future<Location?> getLocationByName({required String locationName}) async {
-
-    try {
-      var permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.whileInUse ||
-          permission == LocationPermission.always) {
-        List<Location> locations = await locationFromAddress(locationName);
-        if(locations.isNotEmpty)
-        {
-          return locations.first;
-          // await getWeatherDetails(
-          //     lat: locations.first.latitude.toString(),
-          //     lng: locations.first.longitude.toString());
-        }
-
-
-
-        // getUserSavedLocations(locationName: locationName);
-      }
-    } catch (e) {
-
-      emit(SearchLocationRemoteFail());
+    List<Location> locations = await locationFromAddress(locationName);
+    if (locations.isNotEmpty) {
+      debugPrint(locations.first.toString());
+      return locations.first;
     }
+
     return null;
   }
 
-
-  Future<void> getWeatherByLocation({required String locationName})async {
+  Future<void> getWeatherByLocation({required String locationName}) async {
     emit(SearchLocationRemoteLoading());
-   final location = await getLocationByName(locationName: locationName);
-   if(location != null){
-     weatherDetailsModel = await getWeatherDetails(lat: location.latitude.toString(),lng:location.longitude.toString() );
-   }
-   else{
-     weatherDetailsModel = await getUserSavedLocations(locationName: locationName);
-   }
-   if(weatherDetailsModel!= null)
-   {
-     emit(WeatherDataFoundSuccess());
-   }
-   else{
-     emit(WeatherDataFoundFail());
-   }
-
+    final location = await getLocationByName(locationName: locationName);
+    if (location != null) {
+      weatherDetailsModel = await getWeatherDetails(
+          lat: location.latitude.toString(),
+          lng: location.longitude.toString());
+    } else {
+      weatherDetailsModel =
+          await getUserSavedLocations(locationName: locationName);
+    }
+    if (weatherDetailsModel != null) {
+      emit(WeatherDataFoundSuccess());
+    } else {
+      emit(WeatherDataFoundFail());
+    }
   }
-
 
   Future<WeatherDetailsModel?> getWeatherDetails({
     required String lat,
@@ -73,7 +53,7 @@ class WeatherCubit extends Cubit<WeatherState> {
     try {
       SearchWeatherUseCase searchWeatherUseCase = SearchWeatherUseCase(sl());
 
-     final details = await searchWeatherUseCase.call(lat: lat, lng: lng);
+      final details = await searchWeatherUseCase.call(lat: lat, lng: lng);
       userSavedLocationsList = await LocalDBController.getSavedLocationList;
       return details;
     } catch (e) {
@@ -82,9 +62,8 @@ class WeatherCubit extends Cubit<WeatherState> {
     }
   }
 
-  Future <WeatherDetailsModel?>
-  getUserSavedLocations({required String locationName}) async {
-
+  Future<WeatherDetailsModel?> getUserSavedLocations(
+      {required String locationName}) async {
     userSavedLocationsList = await LocalDBController.getSavedLocationList;
     if (userSavedLocationsList.isEmpty) {
       showSimpleToast(msg: "Location is Not Found");
