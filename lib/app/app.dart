@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
         providers: [
-          BlocProvider<WeatherCubit>(create: (context) => WeatherCubit()),
+          BlocProvider<WeatherCubit>(create: (context) => WeatherCubit(sl())),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,

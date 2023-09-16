@@ -9,7 +9,9 @@ import 'package:webkeys/features/search_weather/data/models/weather_details_mode
 import 'package:mockito/mockito.dart';
 import 'package:webkeys/features/search_weather/presentation/bloc/weather_cubit/weather_cubit.dart';
 
-class MockWeather extends WeatherCubit with Mock{}
+class MockWeather extends WeatherCubit with Mock{
+  MockWeather(super.searchWeatherUseCase);
+}
 
 class MockWeatherModel extends WeatherDetailsModel with Mock{
   MockWeatherModel({required super.lat, required super.lon, required super.timezone, required super.timezoneOffset, required super.current, required super.daily});
@@ -18,7 +20,7 @@ void main()
 {
   group('test Search Weather', () { 
     test('search Valid Name', () async {
-      var mockWeather = MockWeather ();
+      var mockWeather = MockWeather (sl());
 
         WidgetsFlutterBinding.ensureInitialized();
         await init();

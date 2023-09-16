@@ -16,7 +16,7 @@ void main() {
     await init();
     await tester.pumpWidget(MultiBlocProvider(
         providers: [
-          BlocProvider<WeatherCubit>(create: (context) => WeatherCubit()),
+          BlocProvider<WeatherCubit>(create: (context) => WeatherCubit(sl())),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,

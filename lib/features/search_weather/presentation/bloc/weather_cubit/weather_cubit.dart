@@ -13,17 +13,25 @@ import '../../ui/common_widgets/toast.dart';
 part 'weather_state.dart';
 
 class WeatherCubit extends Cubit<WeatherState> {
-  WeatherCubit() : super(WeatherInitial());
+  WeatherCubit(this.searchWeatherUseCase) : super(WeatherInitial());
+  SearchWeatherUseCase searchWeatherUseCase ;
+  // = SearchWeatherUseCase(sl())
 
   WeatherDetailsModel? weatherDetailsModel;
   List<WeatherDetailsModel> userSavedLocationsList = [];
 
   Future<Location?> getLocationByName({required String locationName}) async {
-    List<Location> locations = await locationFromAddress(locationName);
-    if (locations.isNotEmpty) {
-      debugPrint(locations.first.toString());
-      return locations.first;
+    try{
+      List<Location> locations = await locationFromAddress(locationName);
+      if (locations.isNotEmpty) {
+        debugPrint(locations.first.toString());
+        return locations.first;
+      }
     }
+    catch (e){
+      return null;
+    }
+
 
     return null;
   }
@@ -36,6 +44,7 @@ class WeatherCubit extends Cubit<WeatherState> {
           lat: location.latitude.toString(),
           lng: location.longitude.toString());
     } else {
+
       weatherDetailsModel =
           await getUserSavedLocations(locationName: locationName);
     }
@@ -51,8 +60,6 @@ class WeatherCubit extends Cubit<WeatherState> {
     required String lng,
   }) async {
     try {
-      SearchWeatherUseCase searchWeatherUseCase = SearchWeatherUseCase(sl());
-
       final details = await searchWeatherUseCase.call(lat: lat, lng: lng);
       userSavedLocationsList = await LocalDBController.getSavedLocationList;
       return details;
@@ -70,7 +77,7 @@ class WeatherCubit extends Cubit<WeatherState> {
     } else {
       try {
         final details = userSavedLocationsList.firstWhere(
-            (element) => element.timezone.toLowerCase().contains(locationName));
+            (element) => element.timezone.toLowerCase().contains(locationName.toLowerCase()));
         userSavedLocationsList = await LocalDBController.getSavedLocationList;
 
         return details;

@@ -1,16 +1,8 @@
-# webkeys
 
-clean arch, testing.
 
-## Getting Started
+created an animation on the splash screen & in the list that will be  displaying weather status for the next five days
 
-This project is a starting point for a Flutter application.
+I also stored and displayed the client’s favorite places
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+But  for the testing
+I did a very simple test because honestly im not professional in testing full cycle so I tried to learn it from a course on the Udemy website so kindly do a full test and if any inquiries please let me know.

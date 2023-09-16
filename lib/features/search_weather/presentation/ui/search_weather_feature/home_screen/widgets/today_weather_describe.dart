@@ -12,13 +12,13 @@ class TodayWeatherDescribe extends StatelessWidget {
   Widget build(BuildContext context) {
     final locationCubit = BlocProvider.of<WeatherCubit>(context);
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SizedBox(
           height: ScreenSize.screenHeight * .02,
         ),
         BuildText(
-          txt: "${locationCubit.weatherDetailsModel!.timezone} Today",
+          txt: "${locationCubit.weatherDetailsModel!.timezone} Time Zone Today",
           fontWeight: FontWeight.bold,
           fontSize: 18,
         ),
