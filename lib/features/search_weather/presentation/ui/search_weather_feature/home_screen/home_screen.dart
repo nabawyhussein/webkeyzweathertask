@@ -38,11 +38,11 @@ class _HomeScreenState extends State<HomeScreen> {
         width: ScreenSize.screenWidth,
         height: ScreenSize.screenHeight,
         decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [ColorManager.homeColorLight, ColorManager.homeColorDark],
-          ),
+          // gradient: LinearGradient(
+          //   begin: Alignment.topCenter,
+          //   end: Alignment.bottomCenter,
+          //   colors: [ColorManager.homeColorLight, ColorManager.homeColorDark],
+          // ),
         ),
         child: SingleChildScrollView(
           child: Column(
@@ -71,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: ColorManager.homeColorDark,
                     ));
                   }
-                  return BuildButton(
+                  return BuildButtonWithBackGround(
                     btnText: 'Search',
                     onTap: () {
                       if (searchController.text.isNotEmpty) {

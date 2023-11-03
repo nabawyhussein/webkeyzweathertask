@@ -31,8 +31,6 @@ class WeatherCubit extends Cubit<WeatherState> {
     catch (e){
       return null;
     }
-
-
     return null;
   }
 

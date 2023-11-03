@@ -42,7 +42,7 @@ class SearchResults extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   if (locationCubit.userSavedLocationsList.isNotEmpty)
-                    BuildButton(
+                    BuildButtonWithBackGround(
                       btnText: "Saved Weathers",
                       btnColor: Colors.black,
                       width: ScreenSize.screenWidth * .41,
@@ -51,7 +51,7 @@ class SearchResults extends StatelessWidget {
                         showSavedLocationsDialog();
                       },
                     ),
-                  BuildButton(
+                  BuildButtonWithBackGround(
                     btnText: "Save",
                     btnColor: Colors.black,
                     width: ScreenSize.screenWidth * .41,
