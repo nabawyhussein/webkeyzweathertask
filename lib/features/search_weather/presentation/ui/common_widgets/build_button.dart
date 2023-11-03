@@ -47,8 +47,9 @@ class BuildButtonWithBackGround extends StatelessWidget {
           children: [
             Text(btnText,
                 style: TextStyle(
-                    color: textColor, fontSize: 18,
-                    fontWeight: FontWeight.w800)),
+                    color: textColor,
+                  fontSize: 18,
+                )),
              SvgPicture.asset(
               'assets/backGrounds/buttonArrowForwardIcon.svg',
               // width: 50,
