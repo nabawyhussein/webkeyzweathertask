@@ -27,6 +27,7 @@ dependencies:
   flutter_staggered_animations: ^1.1.1
   mockito: ^5.4.2
   flutter_svg: ^2.0.9
+  dotted_border: ^2.1.0
 
 dev_dependencies:
   flutter_test:
@@ -48,5 +49,6 @@ flutter:
     - assets/images/
     - assets/lottie/
     - assets/backGrounds/
+    - assets/icons/
 
 
