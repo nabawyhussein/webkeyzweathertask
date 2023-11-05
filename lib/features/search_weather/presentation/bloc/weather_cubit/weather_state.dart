@@ -17,6 +17,4 @@ class WeatherDataFoundSuccess extends WeatherState {}
 
 class SaveLocationSuccess extends WeatherState {}
 
-
 class GetUserSavedLocationsSuccess extends WeatherState {}
-

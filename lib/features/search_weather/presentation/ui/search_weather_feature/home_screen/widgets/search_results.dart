@@ -12,6 +12,7 @@ import 'next_days_weathed_describe.dart';
 
 class SearchResults extends StatelessWidget {
   const SearchResults({super.key, required this.searchController});
+
   final TextEditingController searchController;
 
   @override

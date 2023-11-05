@@ -2,9 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
-import 'package:meta/meta.dart';
 
-import '../../../../../core/shared/di/injection.dart';
 import '../../../data/data_source/local/isar_database/set_get_from_local.dart';
 import '../../../data/models/weather_details_model.dart';
 import '../../../domain/use_cases/search_weather_use_case.dart';
@@ -14,21 +12,21 @@ part 'weather_state.dart';
 
 class WeatherCubit extends Cubit<WeatherState> {
   WeatherCubit(this.searchWeatherUseCase) : super(WeatherInitial());
-  SearchWeatherUseCase searchWeatherUseCase ;
+  SearchWeatherUseCase searchWeatherUseCase;
+
   // = SearchWeatherUseCase(sl())
 
   WeatherDetailsModel? weatherDetailsModel;
   List<WeatherDetailsModel> userSavedLocationsList = [];
 
   Future<Location?> getLocationByName({required String locationName}) async {
-    try{
+    try {
       List<Location> locations = await locationFromAddress(locationName);
       if (locations.isNotEmpty) {
         debugPrint(locations.first.toString());
         return locations.first;
       }
-    }
-    catch (e){
+    } catch (e) {
       return null;
     }
     return null;
@@ -42,7 +40,6 @@ class WeatherCubit extends Cubit<WeatherState> {
           lat: location.latitude.toString(),
           lng: location.longitude.toString());
     } else {
-
       weatherDetailsModel =
           await getUserSavedLocations(locationName: locationName);
     }
@@ -74,8 +71,10 @@ class WeatherCubit extends Cubit<WeatherState> {
       showSimpleToast(msg: "Location is Not Found");
     } else {
       try {
-        final details = userSavedLocationsList.firstWhere(
-            (element) => element.timezone.toLowerCase().contains(locationName.toLowerCase()));
+        final details = userSavedLocationsList.firstWhere((element) => element
+            .timezone
+            .toLowerCase()
+            .contains(locationName.toLowerCase()));
         userSavedLocationsList = await LocalDBController.getSavedLocationList;
 
         return details;
