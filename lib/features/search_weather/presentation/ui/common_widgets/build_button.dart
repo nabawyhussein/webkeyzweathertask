@@ -34,12 +34,9 @@ class BuildButtonWithBackGround extends StatelessWidget {
         // margin: EdgeInsets.only(top: ScreenSize.screenHeight * .015),
         decoration: BoxDecoration(
           // color: btnColor,
-            image: const DecorationImage(
-                image: AssetImage(
-                    "assets/backGrounds/buttonBackground.png"
-                ),
-                 fit: BoxFit.fitWidth
-            ),
+          image: const DecorationImage(
+              image: AssetImage("assets/backGrounds/buttonBackground.png"),
+              fit: BoxFit.fitWidth),
           borderRadius: BorderRadius.circular(ConstantsManager.borderRadius),
         ),
         child: Row(
@@ -47,10 +44,10 @@ class BuildButtonWithBackGround extends StatelessWidget {
           children: [
             Text(btnText,
                 style: TextStyle(
-                    color: textColor,
+                  color: textColor,
                   fontSize: 18,
                 )),
-             SvgPicture.asset(
+            SvgPicture.asset(
               'assets/backGrounds/buttonArrowForwardIcon.svg',
               // width: 50,
               // height: 50,

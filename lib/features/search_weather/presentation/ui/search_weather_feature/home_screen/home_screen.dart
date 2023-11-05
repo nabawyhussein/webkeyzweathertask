@@ -2,10 +2,8 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:lottie/lottie.dart';
 import 'package:webkeys/features/search_weather/presentation/ui/common_widgets/build_text.dart';
-import 'package:webkeys/features/search_weather/presentation/ui/search_weather_feature/home_screen/widgets/search_results.dart';
-import '../../../../../../core/shared/resources/assets_manger.dart';
+
 import '../../../../../../core/shared/resources/colors_manager.dart';
 import '../../../../../../core/shared/resources/constants_manager.dart';
 import '../../../../../../core/shared/resources/responsive_screens_controller.dart';
@@ -42,12 +40,12 @@ class _HomeScreenState extends State<HomeScreen> {
         width: ScreenSize.screenWidth,
         height: ScreenSize.screenHeight,
         decoration: const BoxDecoration(
-          // gradient: LinearGradient(
-          //   begin: Alignment.topCenter,
-          //   end: Alignment.bottomCenter,
-          //   colors: [ColorManager.homeColorLight, ColorManager.homeColorDark],
-          // ),
-        ),
+            // gradient: LinearGradient(
+            //   begin: Alignment.topCenter,
+            //   end: Alignment.bottomCenter,
+            //   colors: [ColorManager.homeColorLight, ColorManager.homeColorDark],
+            // ),
+            ),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -55,8 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(
                 height: ScreenSize.screenHeight * .015,
               ),
-              Image.asset(
-                  "assets/backGrounds/authScreensBackground.png",
+              Image.asset("assets/backGrounds/authScreensBackground.png",
                   // height: ScreenSize.screenHeight * .2,
                   width: ScreenSize.screenWidth,
                   fit: BoxFit.fill),
@@ -94,42 +91,42 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(ConstantsManager.borderRadius),
-                  border: Border.all(color: Colors.grey)
-                ),
-                width: ScreenSize.screenWidth*.4,
-                height: ScreenSize.screenHeight*.15,
+                    borderRadius:
+                        BorderRadius.circular(ConstantsManager.borderRadius),
+                    border: Border.all(color: Colors.grey)),
+                width: ScreenSize.screenWidth * .4,
+                height: ScreenSize.screenHeight * .15,
                 // padding: EdgeInsets.all(ScreenSize.screenHeight*0.03),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Transform.scale(
                       scale: .7,
-                      child: Checkbox(value: true,
+                      child: Checkbox(
+                          value: true,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(9.0),
                             // side: const BorderSide(width: 1,color: Colors.green)
                           ),
                           side: MaterialStateBorderSide.resolveWith(
-                                (states) => const BorderSide(width: 2.0, color: Colors.red,
-                                  strokeAlign: 5,
-                                ),
+                            (states) => const BorderSide(
+                              width: 2.0,
+                              color: Colors.red,
+                              strokeAlign: 5,
+                            ),
                           ),
                           fillColor: MaterialStateColor.resolveWith((states) {
                             return Colors.red;
                           }),
                           checkColor: Colors.red,
-                          onChanged: (v){
-
-                      }
-
-
-                      ),
+                          onChanged: (v) {}),
                     ),
-                    Align(
+                    const Align(
                       alignment: Alignment.center,
-                      child: BuildText(txt: "Unit 57-A",fontWeight: FontWeight.bold,
-                      fontSize: 22,
+                      child: BuildText(
+                        txt: "Unit 57-A",
+                        fontWeight: FontWeight.bold,
+                        fontSize: 22,
                         textAlign: TextAlign.center,
                       ),
                     )
@@ -144,13 +141,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Transform.scale(
                     scale: .7,
-                    child: Checkbox(value: true,
+                    child: Checkbox(
+                        value: true,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(9.0),
                           // side: const BorderSide(width: 1,color: Colors.green)
                         ),
                         side: MaterialStateBorderSide.resolveWith(
-                              (states) => const BorderSide(width: 2.0, color: Colors.red,
+                          (states) => const BorderSide(
+                            width: 2.0,
+                            color: Colors.red,
                             strokeAlign: 5,
                           ),
                         ),
@@ -158,14 +158,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           return Colors.red;
                         }),
                         checkColor: Colors.red,
-                        onChanged: (v){
-
-                        }
-
-
-                    ),
+                        onChanged: (v) {}),
                   ),
-                  BuildText(txt: "National ID",
+                  const BuildText(
+                    txt: "National ID",
                     fontSize: 18,
                     textAlign: TextAlign.center,
                   ),
@@ -181,20 +177,19 @@ class _HomeScreenState extends State<HomeScreen> {
                   color: Colors.grey,
                   strokeWidth: 2,
                   dashPattern: const [10, 10, 10, 10],
-                  padding: EdgeInsets.symmetric
-                    (horizontal: ScreenSize.screenWidth*.065,
-                  vertical: ScreenSize.screenHeight * 0.02
-                  ),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: ScreenSize.screenWidth * .065,
+                      vertical: ScreenSize.screenHeight * 0.02),
                   // borderType: BorderType.Rect,
                   // borderPadding: EdgeInsets.symmetric(horizontal: 5),
                   borderType: BorderType.RRect,
                   radius: Radius.circular(ConstantsManager.borderRadius),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.end,
-                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-
-                      BuildText(txt: "Upload national ID-Front",
+                      const BuildText(
+                        txt: "Upload national ID-Front",
                         fontSize: 18,
                         textAlign: TextAlign.center,
                       ),
