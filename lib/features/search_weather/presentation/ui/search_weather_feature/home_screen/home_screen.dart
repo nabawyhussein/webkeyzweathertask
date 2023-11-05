@@ -179,26 +179,28 @@ class _HomeScreenState extends State<HomeScreen> {
                   dashPattern: const [10, 10, 10, 10],
                   padding: EdgeInsets.symmetric(
                       horizontal: ScreenSize.screenWidth * .065,
-                      vertical: ScreenSize.screenHeight * 0.02),
+                      // vertical: ScreenSize.screenHeight * 0.02
+                  ),
                   // borderType: BorderType.Rect,
                   // borderPadding: EdgeInsets.symmetric(horizontal: 5),
                   borderType: BorderType.RRect,
                   radius: Radius.circular(ConstantsManager.borderRadius),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const BuildText(
-                        txt: "Upload national ID-Front",
-                        fontSize: 18,
-                        textAlign: TextAlign.center,
-                      ),
-                      SvgPicture.asset(
-                        'assets/icons/uploadIdIcon.svg',
-                        // width: 50,
-                        // height: 50,
-                      ),
-                    ],
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const BuildText(
+                          txt: "Upload national ID-Front",
+                          fontSize: 18,
+                          textAlign: TextAlign.center,
+                        ),
+                        SvgPicture.asset(
+                          'assets/icons/uploadIdIcon.svg',
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
